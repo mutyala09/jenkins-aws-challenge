@@ -2,6 +2,7 @@ version: "3.4"
 services:
   api_service:
     image: "${IMAGE:-mutyala09/spring-boot-app:latest}"
+    container_name: api
     restart: always
     ports:
       - 8080:8080
@@ -9,6 +10,7 @@ services:
       - mongo_db:app_db
   mongo_db:
     image: "mongo:4.4.3"
+    container_name: db
     restart: always
     ports:
       - 27017:27017
