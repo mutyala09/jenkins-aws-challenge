@@ -38,13 +38,13 @@
     $ ssh -i key.pem ubuntu@54.157.9.172
     $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     ```
-  2. Install docker pipeline plugin, maven integration plugin, ssh plugin.
+  2. Install docker pipeline plugin, maven integration plugin, ssh plugin and Generic webhook trigger plugin.
   3. Configure maven with auto installation with name mymaven in global tool configuration.
   4. Create credentials for docker hub with id 'dockerhub'.
   5. Create ssh private key credentials with ssh key from terraform output with id 'key'.
   6. Configure ssh remote host with username, ip and key in configure system.
   7. Create a pipeline jenkins job with https://github.com/mutyala09/jenkins-aws-challenge.git git repo and main branch.
-  8. Configure webhook integrating github and jenkins for automatic pipeline trigger. Configure webhook by going to github repo -> settings -> add webhook and add jenkins webhook url.
+  8. Configure webhook integrating github and jenkins for automatic pipeline trigger. Configure webhook by going to github repo -> settings -> add webhook and add jenkins generic webhook trigger plugin url with token.
   
 ## To test
 
