@@ -38,7 +38,7 @@
     $ ssh -i key.pem ubuntu@54.157.9.172
     $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     ```
-  2. Install docker pipeline plugin, maven integration plugin, ssh plugin and Generic webhook trigger plugin.
+  2. Install docker pipeline plugin, pipeline maven integration plugin, ssh plugin and Generic webhook trigger plugin.
   3. Configure maven with auto installation with name mymaven in global tool configuration.
   4. Create credentials for docker hub with id 'dockerhub'.
   5. Create ssh private key credentials with ssh key from terraform output with id 'key'.
