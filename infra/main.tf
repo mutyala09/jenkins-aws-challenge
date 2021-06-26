@@ -137,7 +137,7 @@ resource "aws_instance" "webapp" {
                 git clone https://github.com/mutyala09/jenkins-aws-challenge.git helloapp
                 sudo chown -R ubuntu:ubuntu helloapp
                 cd helloapp
-                docker-compose up -d --build
+                docker-compose -p cicd up -d --build
                 EOF
 
   tags = {
