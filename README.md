@@ -47,7 +47,8 @@
   8. Configure webhook integrating github and jenkins for automatic pipeline trigger. Configure webhook by going to github repo -> settings -> add webhook and add jenkins generic webhook trigger plugin url with token.
   
 ## To test
-
+  
+  Change code and check if pipeline is triggered automatically and once done, check if change is reflected in the app.
   1. Create User
   
   ```bash
