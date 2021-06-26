@@ -46,3 +46,25 @@
   7. Create a pipeline jenkins job with https://github.com/mutyala09/jenkins-aws-challenge.git git repo and main branch.
   8. Configure webhook integrating github and jenkins for automatic pipeline trigger. Configure webhook by going to github repo -> settings -> add webhook and add jenkins webhook url.
   
+## To test
+
+  1. Create User
+  
+  ```bash
+  $ curl -X POST \
+  http://100.26.238.127:8080/api/user \
+  -d '{
+	"firstName": "Test",
+	"lastName": "User",
+	"email": "test1@test.com",
+	"age": 32,
+	"address": "US"
+  }'
+  ```
+  
+  2. To retrieve all users
+
+  ```bash
+  $ curl -X GET \
+  http://100.26.238.127:8080/api/users
+  ```
