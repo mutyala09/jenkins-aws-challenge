@@ -38,7 +38,7 @@ pipeline {
       steps {
 	  withCredentials([sshUserPrivateKey(credentialsId: "key", keyFileVariable: 'keyfile')]) {
 		sh 'scp -i ${keyfile} docker-compose.yaml ubuntu@18.209.225.51:~/'
-          	sh 'ssh -i ${keyfile} ubuntu@18.209.225.51 "IMAGE=mutyala09/spring-boot-app:${BUILD_NUMBER} docker-compose up -d --build"'
+          	sh 'ssh -i ${keyfile} ubuntu@18.209.225.51 "IMAGE=mutyala09/spring-boot-app:${BUILD_NUMBER} docker-compose -p cicd up -d --build"'
 	  }
       }
     }
