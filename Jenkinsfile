@@ -5,13 +5,17 @@ pipeline {
 
 		stage('Compile') {
 			steps {
-				sh 'mvn clean compile'
+				withMaven {
+				  sh "mvn clean compile"
+				}
 			}
 		}
 
 		stage('Package') {
 			steps {
-				sh "mvn package"
+				withMaven {
+				  sh "mvn package"
+				}
 			}
 		}
 		stage('Build Docker image') {
