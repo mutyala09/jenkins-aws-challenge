@@ -32,7 +32,7 @@ pipeline {
 		}
     stage ('Deploy') {
       steps {
-          sh 'ssh ubuntu@${REMOTE_HOST} "IMAGE=mutyala09/spring-boot-app:${BUILD_NUMBER} docker-compose up -d --build"'
+          sh 'ssh ubuntu@18.209.225.51 "IMAGE=mutyala09/spring-boot-app:${BUILD_NUMBER} docker-compose up -d --build"'
       }
     }
 	}
