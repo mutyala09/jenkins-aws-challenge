@@ -33,7 +33,7 @@ public class UserController {
 		Map<String, Object> responseMap = new HashMap<>();
 
 		responseMap.put("users", users);
-		responseMap.put("status", 200);
+		responseMap.put("response_code", 200);
 		responseMap.put("message", "Success");
 
 		return responseMap;
