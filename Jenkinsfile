@@ -5,7 +5,7 @@ pipeline {
 
 		stage('Compile') {
 			steps {
-				withMaven {
+				withMaven(maven: 'mymaven') {
 				  sh "mvn clean compile"
 				}
 			}
@@ -13,7 +13,7 @@ pipeline {
 
 		stage('Package') {
 			steps {
-				withMaven {
+				withMaven(maven: 'mymaven') {
 				  sh "mvn package"
 				}
 			}
