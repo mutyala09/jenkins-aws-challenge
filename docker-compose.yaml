@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  api_service:
+    image: "${IMAGE:-mutyala09/spring-boot-app:latest}"
+    restart: always
+    ports:
+      - 8080:8080
+    links:
+      - mongo_db:app_db
+  mongo_db:
+    image: "mongo:4.4.3"
+    restart: always
+    ports:
+      - 27017:27017
