@@ -69,15 +69,15 @@ resource "aws_security_group" "web_traffic" {
 }
 
 resource "aws_instance" "jenkins" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  ami             = data.aws_ami.ubuntu.id
+  instance_type   = "t2.micro"
   security_groups = [aws_security_group.web_traffic.name]
   key_name        = var.key_name
 
   provisioner "remote-exec" {
     inline = [
       "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
-      "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
+      "echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list",
       "sudo apt update -qq",
       "sudo apt install -y default-jre",
       "sudo apt install -y jenkins",
@@ -105,12 +105,12 @@ resource "aws_instance" "jenkins" {
 }
 
 resource "aws_instance" "webapp" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  ami             = data.aws_ami.ubuntu.id
+  instance_type   = "t2.micro"
   security_groups = [aws_security_group.web_traffic.name]
   key_name        = var.key_name
 
-  user_data              = <<-EOF
+  user_data = <<-EOF
                 #!/bin/bash
                 sudo apt update -y
                 sudo apt install software-properties-common apt-transport-https ca-certificates curl -y
@@ -126,7 +126,7 @@ resource "aws_instance" "webapp" {
                 sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
                 sudo chmod +x /usr/local/bin/docker-compose
                 cd /home/ubuntu
-                git clone https://github.com/Yeshreddy0405/modiface-assessment.git helloapp
+                git clone https://github.com/mutyala09/jenkins-aws-challenge.git helloapp
                 sudo chown -R ubuntu:ubuntu helloapp
                 cd helloapp
                 docker-compose up -d --build
@@ -147,5 +147,5 @@ output "jenkins_ip_address" {
 }
 
 output "webapp_ip_address" {
-  value = "${aws_instance.jenkins.public_ip}"
+  value = "${aws_instance.webapp.public_ip}"
 }
